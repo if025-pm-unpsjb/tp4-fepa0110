@@ -2,13 +2,12 @@
 
 DigitalOut led1(LED1);
 
-int main()
-{
-    while(1)
-    {
-        led1 = 0;
-        wait(1);
-        led1 = 1;
-        wait(1);
+Serial serial(USBTX, USBRX, 9600);
+
+char echo;
+int main() {
+    serial.printf("Echoes back to the screen anything you type\n");
+    while(1) {
+        serial.printf("%c\r\n", serial.getc());
     }
 }
